@@ -14,8 +14,8 @@
         if param[:validator].expected_type == "object" && param[:validator].params_ordered.present?
           param[:sub_properties] = "<br>#{param[:validator].params_ordered.map {|v| "<li>#{v.name} (#{v.expected_type})</li>"}.join("")}"
           param[:validator] = nil
-        elsif param[:validator].expected_type == "string"
-          param[:validator] = "String"
+        elsif param[:validator].expected_type != "object"
+          param[:validator] = param[:validator].expected_type
         else
           param[:validator] = nil
         end
