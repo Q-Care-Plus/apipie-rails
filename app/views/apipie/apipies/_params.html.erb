@@ -23,9 +23,15 @@
     end
   %>
   <tr style='background-color:rgb(<%= "#{col},#{col},#{col}" %>);'>
+    <%
+      if level > 0
+        margin = level*20;
+        margin_style = "margin-left:#{margin}px;"
+      end
+    %>
     <td>
-      <strong><%= param[:full_name] %> </strong><br>
-      <small>
+      <strong style=<%=margin_style%>><%= param[:full_name] %> </strong><br>
+      <small style=<%=margin_style%>>
         <%= param[:required] ? t('apipie.required') : t('apipie.optional') %>
         <%= param[:allow_nil] ? ', '+t('apipie.nil_allowed') : '' %>
       </small>
