@@ -97,6 +97,7 @@ module Apipie
       @validations = Array(options[:validations]).map {|v| concern_subst(Apipie.markup_to_html(v)) }
 
       @additional_properties = @options[:additional_properties]
+      @required = is_required?
     end
 
     def from_concern?

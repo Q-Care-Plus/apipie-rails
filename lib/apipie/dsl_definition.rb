@@ -247,6 +247,9 @@ module Apipie
                 method_params.each do |_, param|
                   # check if required parameters are present
                   raise ParamMissing.new(param) if param.required && !params.has_key?(param.name)
+                  if param.validator.to_s == "Must be a Hash"
+                    param.validate(params[param.name])
+                  end
                 end
               end
 
